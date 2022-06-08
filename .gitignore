@@ -1,0 +1,17 @@
+/.DS_Store
+/source/.DS_Store
+/.vscode
+/build
+/*.bin
+/*.exe
+/*.dll
+/*.dylib
+/*.so
+/*.o
+/*.a
+/*.lib
+/*.obj
+/*.map
+/*.pdb
+/Sample.kk
+/*.tok
