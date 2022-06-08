@@ -1,6 +1,14 @@
-# Simple Lexer written in C99
+# Handcrafted lexer written In c99
 
 License Public Domain
+
+# Building Instructions
+
+```zsh
+   make clean build
+
+   ./build/kc example.kk
+```
 
 ### Supported Syntax
 
