@@ -233,7 +233,7 @@ dk_hashmap_create(i32_t capacity)
   map->size = 0;
   map->pairs =
     (dk_hashmap_pair_t*)dk_malloc(sizeof(dk_hashmap_pair_t) * capacity);
-  memset(map->pairs, dk_empty_VALUE, sizeof(dk_hashmap_pair_t) * capacity);
+	memset(map->pairs, dk_empty_VALUE, sizeof(dk_hashmap_pair_t) * capacity);
   return map;
 }
 

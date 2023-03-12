@@ -91,6 +91,9 @@ typedef enum
   DK_TOKEN_FALSE,
   DK_TOKEN_STRUCT,
   DK_TOKEN_ENUM,
+  DK_TOKEN_IMPORT,
+  DK_TOKEN_MODULE,
+  DK_TOKEN_USE,
 } dk_token_type_t;
 
 global_variable const struct
@@ -105,6 +108,8 @@ global_variable const struct
   { "str", DK_TOKEN_STR },       { "bool", DK_TOKEN_BOOL },
   { "true", DK_TOKEN_TRUE },     { "false", DK_TOKEN_FALSE },
   { "struct", DK_TOKEN_STRUCT }, { "enum", DK_TOKEN_ENUM },
+  { "import", DK_TOKEN_IMPORT }, { "module", DK_TOKEN_MODULE },
+  { "use", DK_TOKEN_USE },
 };
 
 typedef struct

@@ -105,7 +105,7 @@ dk_lexer_next_token(dk_lexer_t* p_lexer)
   else if (IsDelimiter(c)) {
     u8_t* p_deli = (u8_t*)dk_malloc(sizeof(u8_t) * (size - *cursor));
     u32_t deli_size = 0;
-    while (IsDelimiter(c)) {
+    while (IsDelimiter(c) && !IsAlphaNumUnderScore(c)) {
       p_deli[deli_size++] = c;
       c = p_data[++(*cursor)];
     }
@@ -126,27 +126,27 @@ dk_lexer_next_token(dk_lexer_t* p_lexer)
   }
 
   else if (c == '{') {
-    u8_t* p_str = (u8_t*)dk_malloc(sizeof(u8_t) * (size - *cursor));
-    u32_t str_size = 0;
+    u8_t* p_obrace = (u8_t*)dk_malloc(sizeof(u8_t) * (size - *cursor));
+    u32_t obrace_size = 0;
     c = p_data[++(*cursor)];
     while (c == '}') {
-      p_str[str_size++] = c;
+      p_obrace[obrace_size++] = c;
       c = p_data[++(*cursor)];
     }
-    p_str[str_size] = 0;
-    return dk_token_create(DK_TOKEN_OPEN_BRACE, p_str, str_size);
+    p_obrace[obrace_size] = 0;
+    return dk_token_create(DK_TOKEN_OPEN_BRACE, p_obrace, obrace_size);
   }
 
   else if (c == '}') {
-    u8_t* p_str = (u8_t*)dk_malloc(sizeof(u8_t) * (size - *cursor));
-    u32_t str_size = 0;
+    u8_t* p_cbrace = (u8_t*)dk_malloc(sizeof(u8_t) * (size - *cursor));
+    u32_t cbrace_size = 0;
     c = p_data[++(*cursor)];
     while (c == ';') {
-      p_str[str_size++] = c;
+      p_cbrace[cbrace_size++] = c;
       c = p_data[++(*cursor)];
     }
-    p_str[str_size] = 0;
-    return dk_token_create(DK_TOKEN_CLOSE_BRACE, p_str, str_size);
+    p_cbrace[cbrace_size] = 0;
+    return dk_token_create(DK_TOKEN_CLOSE_BRACE, p_cbrace, cbrace_size);
   }
 
   else if (IsNumber(c)) {
